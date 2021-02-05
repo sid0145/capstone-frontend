@@ -1,5 +1,5 @@
 <div
-  *ngIf="!isLoading"
+  *ngIf="isLoading"
   class="d-flex h-100 align-items-center justify-content-center mt-5"
 >
   <div class="spinner-grow text-primary" role="status">
@@ -27,7 +27,7 @@
     <span class="sr-only">Loading...</span>
   </div>
 </div>
-<div class="card m-0" *ngIf="isLoading">
+<div class="card m-0">
   <div class="container-fluid">
     <div class="row no-gutter">
       <!-- The image half -->

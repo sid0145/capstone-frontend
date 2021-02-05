@@ -4,7 +4,19 @@
 }
 
 .bg-image {
-  background-image: url("../../../../assets/login-left.jpg");
+  background-image: url("../../../../assets/resister-img.png");
   background-size: cover;
   background-position: center center;
+}
+.card {
+  background-color: rgb(113, 169, 196);
+}
+input {
+  color: black;
+}
+
+h2 {
+  color: #fff;
+  text-transform: capitalize;
+  font-size: 30px;
 }
