@@ -11,7 +11,11 @@
 }
 
 .bg-image {
-  background-image: url("../../../../assets/login-left.jpg");
+  /* background-color: rgb(46, 142, 187); */
+  background-image: url("../../../../assets/resister-img.png");
   background-size: cover;
   background-position: center center;
+}
+.card {
+  background-color: rgb(46, 142, 187);
 }

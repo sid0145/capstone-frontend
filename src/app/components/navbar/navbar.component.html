@@ -1,13 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/">
       <img
-        class="d-inline-block mr-2"
-        src="../../../assets/task.svg"
+        src="../../../assets/people-3245739.png"
         alt=""
-        height="35"
+        height="28"
+        class="ml-0 mr-2"
       />
-      <span>TASKAPP</span>
+      <span>GROWFREE</span>
     </a>
     <button
       class="navbar-toggler collapsed"
@@ -29,9 +29,6 @@
       [ngbCollapse]="isCollapsed"
     >
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/">Home</a>
-        </li>
         <li class="nav-item" *ngIf="userIsAuthenticated">
           <a class="nav-link" routerLink="lists">Lists</a>
         </li>
@@ -48,10 +45,7 @@
           >
           <div class="dropdown-menu" ngbDropdownMenu>
             <a class="dropdown-item" ngbDropdownItem href="#">Edit Profile</a>
-            <a
-              class="dropdown-item btn btn-primary"
-              ngbDropdownItem
-              (click)="onLogout()"
+            <a class="dropdown-item btn" ngbDropdownItem (click)="onLogout()"
               >Logout</a
             >
           </div>
@@ -60,15 +54,23 @@
           <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
             Hire Developers
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#"> Angular Developers</a></li>
+          <ul class="dropdown-menu bg-info">
+            <li>
+              <a class="dropdown-item" routerLink="/angular-developers">
+                Angular Developers</a
+              >
+            </li>
             <li><a class="dropdown-item" href="#"> Node Developers </a></li>
             <li><a class="dropdown-item" href="#"> Python Developers</a></li>
-            <li><a class="dropdown-item" href="#"> Java Developers</a></li>
+            <li>
+              <a class="dropdown-item" routerLink="/java-developers">
+                Java Developers</a
+              >
+            </li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link">getHelp</a>
+          <a class="nav-link" routerLink="contact-us">ContactUs</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/ourStory">Our Story</a>

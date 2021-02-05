@@ -1,0 +1,145 @@
+<div *ngIf="isLoading" class="loading">
+  <div class="spinner-grow text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="spinner-grow text-secondary" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="spinner-grow text-success" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="spinner-grow text-danger" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="spinner-grow text-warning" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="spinner-grow text-info" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="spinner-grow text-light" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="spinner-grow text-dark" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div class="card" *ngIf="!isLoading">
+  <div class="container-fluid">
+    <div class="row content">
+      <div class="col-sm-3 sidenav">
+        <h4>Siddhesh Tripathi</h4>
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <div class="member" data-aos="zoom-in" data-aos-delay="300">
+              <div class="pic">
+                <img
+                  src="../../../../assets/sid.jpeg"
+                  class="img-fluid"
+                  alt=""
+                />
+              </div>
+              <div>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-9 right">
+        <h4 class="mt-2 text-center">
+          <strong>
+            <ul>
+              Angular Developer
+            </ul>
+          </strong>
+          <span>
+            <a class="btn btn-get-started scrollto bg-success">Hire him Now </a>
+          </span>
+        </h4>
+        <hr />
+        <h5>
+          2+ Year experience in Angular Technology.Working here as a part timer.
+        </h5>
+
+        <h4><small>RECENT PROJECTS</small></h4>
+        <hr />
+
+        <div class="accordion-list">
+          <ul>
+            <li>
+              <a
+                data-toggle="collapse"
+                class="collapse"
+                href="#accordion-list-1"
+                ><span>01</span> Invoice-App
+                <i class="fa fa-angle-double-down icon-show"></i>
+                <i class="fa fa-angle-double-up icon-close"></i>
+              </a>
+              <div
+                id="accordion-list-1"
+                class="collapse show"
+                data-parent=".accordion-list"
+              >
+                <hr />
+                <h5>
+                  <strong class="ml-4 text-info">Description:</strong>
+                  Create a account and track all your users and client with
+                  proper platform.
+                </h5>
+                <div class="demo">
+                  <a
+                    class="btn btn-get-started bg-warning"
+                    target="_blank"
+                    type="submit"
+                    rel="noopener noreferrer"
+                    href="https://sid-app-invoice.herokuapp.com/dashboard/invoices"
+                  >
+                    Live Demo
+                  </a>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <a
+                data-toggle="collapse"
+                href="#accordion-list-2"
+                class="collapsed"
+                ><span>02</span> Client-Panel
+                <i class="fa fa-angle-double-down icon-show"></i>
+                <i class="fa fa-angle-double-up icon-close"></i>
+              </a>
+              <div
+                id="accordion-list-2"
+                class="collapse"
+                data-parent=".accordion-list"
+              >
+                <hr />
+                <h5>
+                  <strong class="ml-4 text-info">Description:</strong>
+                  Create a account and track all your users and client with
+                  proper platform.
+                </h5>
+                <a
+                  class="btn btn-block btn-get-started scrollto bg-warning"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://clients-panel.herokuapp.com/"
+                  >Live Demo</a
+                >
+              </div>
+            </li>
+          </ul>
+        </div>
+        <hr />
+      </div>
+    </div>
+  </div>
+</div>

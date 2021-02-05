@@ -2,7 +2,15 @@
   <div class="container-fluid">
     <div class="row no-gutter">
       <!-- The image half -->
-      <div class="col-md-6 d-none d-md-flex bg-image"></div>
+      <div class="col-md-6 d-none d-md-flex bg-image">
+        <div
+          class="col-lg-6 d-flex flex-column pt-5"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <h2>Start A new Journey With Us!</h2>
+        </div>
+      </div>
 
       <!-- The right-->
       <div class="col-md-6 bg-light">
@@ -11,29 +19,102 @@
             <div class="row">
               <div class="col-lg-10 col-xl-7 mx-auto">
                 <h3 class="display-4">Resister Here!</h3>
-                <p class="text-muted mb-4">Start With Us</p>
-                <form>
+
+                <form [formGroup]="signUpForm" (submit)="onSubmit()" novalidate>
                   <div class="form-group mb-3">
                     <input
-                      id="inputEmail"
-                      type="email"
-                      placeholder="Email address"
-                      required=""
-                      autofocus=""
+                      type="text"
+                      placeholder="username"
+                      formControlName="username"
+                      [ngClass]="{
+                        'is-invalid':
+                          signUpForm.get('username').errors &&
+                          signUpForm.get('username').touched
+                      }"
                       class="form-control rounded-pill border-0 shadow-sm px-4"
                     />
+
+                    <div
+                      *ngIf="signUpForm.get('username').hasError('required')"
+                      class="invalid-feedback ml-2"
+                    >
+                      username is required!
+                    </div>
+                    <div
+                      *ngIf="signUpForm.get('username').hasError('minlength')"
+                      class="invalid-feedback ml-2"
+                    >
+                      username must be 4 char long!
+                    </div>
+                    <div
+                      *ngIf="signUpForm.get('username').hasError('pattern')"
+                      class="invalid-feedback ml-2"
+                    >
+                      username must be only letter!
+                    </div>
                   </div>
+                  <!-- 
+                 --------------******* email field -->
                   <div class="form-group mb-3">
                     <input
-                      id="inputPassword"
-                      type="password"
-                      placeholder="Password"
-                      required=""
-                      class="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
+                      type="email"
+                      placeholder="email"
+                      formControlName="email"
+                      [ngClass]="{
+                        'is-invalid':
+                          signUpForm.get('email').errors &&
+                          signUpForm.get('email').touched
+                      }"
+                      class="form-control rounded-pill border-0 shadow-sm px-4"
                     />
+
+                    <div
+                      *ngIf="signUpForm.get('email').hasError('required')"
+                      class="invalid-feedback ml-2"
+                    >
+                      email is required!
+                    </div>
+
+                    <div
+                      *ngIf="signUpForm.get('email').hasError('pattern')"
+                      class="invalid-feedback ml-2"
+                    >
+                      email must be valid!
+                    </div>
+                  </div>
+
+                  <!------------------------------- password field -->
+
+                  <div class="form-group mb-3">
+                    <input
+                      type="password"
+                      placeholder="password"
+                      formControlName="password"
+                      [ngClass]="{
+                        'is-invalid':
+                          signUpForm.get('password').errors &&
+                          signUpForm.get('password').touched
+                      }"
+                      class="form-control rounded-pill border-0 shadow-sm px-4"
+                    />
+
+                    <div
+                      *ngIf="signUpForm.get('password').hasError('required')"
+                      class="invalid-feedback ml-2"
+                    >
+                      password is required!
+                    </div>
+
+                    <div
+                      *ngIf="signUpForm.get('password').hasError('minlength')"
+                      class="invalid-feedback ml-2"
+                    >
+                      password must be 3 char long!
+                    </div>
                   </div>
                   <button
                     type="submit"
+                    [disabled]="!signUpForm.valid"
                     class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm"
                   >
                     Sign in

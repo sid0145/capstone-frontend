@@ -9,10 +9,5 @@ export class LoginComponent implements OnInit {
   isLoading = false;
   constructor() {}
 
-  ngOnInit() {
-    setTimeout(() => {
-      this.isLoading = true;
-    }, 3000);
-    this.isLoading = false;
-  }
+  ngOnInit() {}
 }

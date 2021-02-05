@@ -3,9 +3,9 @@
 footer {
   background: #df1d47;
   background: -webkit-linear-gradient(59deg, #3a6073, #16222a);
-  background: linear-gradient(59deg, #ce3506, #ee4f05);
+  background: linear-gradient(59deg, #5f98b3, rgb(46, 142, 187));
   color: white;
-  margin-top: 100px;
+  margin-top: 0px;
 }
 
 footer a {

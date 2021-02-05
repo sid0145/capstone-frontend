@@ -1,3 +1,8 @@
+.navbar-brand {
+  overflow: hidden;
+  padding: 16px 30px 12px 30px;
+  background: #ec8a09;
+}
 @media all and (min-width: 992px) {
   .navbar .nav-item .dropdown-menu {
     display: none;
@@ -11,4 +16,18 @@
   .navbar .nav-item .dropdown-menu {
     margin-top: 0;
   }
+}
+
+.navbar {
+  background-color: #eeb20e;
+}
+a {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: none;
+  color: #fff;
+}
+.dropdown-item {
+  color: black;
 }
