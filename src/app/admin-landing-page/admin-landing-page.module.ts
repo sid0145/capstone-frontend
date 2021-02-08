@@ -1,0 +1,17 @@
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { AdminRoutingModule } from "./admin-routing.module";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { UsersComponent } from "./pages/users/users.component";
+import { AdminDashboardComponent } from "./admin-dashboard/admin-dashboard.component";
+import { RequestComponent } from "./pages/request/request.component";
+import { ProjectComponent } from './pages/project/project.component';
+import { DevelopersComponent } from './pages/developers/developers.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ContactMessagesComponent } from './pages/contact-messages/contact-messages.component';
+
+@NgModule({
+  declarations: [UsersComponent, AdminDashboardComponent, RequestComponent, ProjectComponent, DevelopersComponent, DashboardComponent, ContactMessagesComponent],
+  imports: [CommonModule, AdminRoutingModule, NgbModule],
+})
+export class AdminLandingPageModule {}

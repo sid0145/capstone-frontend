@@ -1,0 +1,89 @@
+<div class="main">
+  <div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <div class="member" data-aos="zoom-in" data-aos-delay="300">
+              <div class="pic">
+                <img
+                  src="../../../assets/siddhesh-details-image.png"
+                  class="img-fluid"
+                  alt="admin-pic"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ul class="list-unstyled components">
+        <hr />
+        <li>
+          <a [routerLink]="['main']" class="text-warning">
+            <span> <i class="fa fa-home"></i> </span> Dashboard
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['users']" class="text-warning">
+            <span> <i class="fa fa-users"></i> </span>
+            Users</a
+          >
+        </li>
+        <li>
+          <a [routerLink]="['developers']" class="text-warning">
+            <span> <i class="fa fa-desktop"></i> </span>
+            Developers</a
+          >
+        </li>
+        <li>
+          <a [routerLink]="['requests']" class="text-warning">
+            <span> <i class="fa fa-paper-plane"></i> </span>
+            Requests</a
+          >
+        </li>
+        <li>
+          <a [routerLink]="['projects']" class="text-warning">
+            <span><i class="fa fa-book"></i> </span>
+            Projects</a
+          >
+        </li>
+      </ul>
+
+      <!-- <ul class="list-unstyled CTAs">
+        <li>
+          <a routerLink="/" class="article">Back to Dashboard</a>
+        </li>
+      </ul> -->
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <button type="button" id="sidebarCollapse" class="btn btn-warning">
+            <i class="fa fa-align-left"></i>
+          </button>
+          <h5 class="text-center">
+            <span><i class="fa fa-user-plus text-warning"></i> </span>
+            Siddhesh Tripathi
+            <span><i class="fa fa-circle text-success"></i></span>
+          </h5>
+          <div>
+            <a id="sidebarCollapse" class="btn btn-warning" routerLink="/">
+              <i class="fa fa-home"></i>
+              <span> Go to Home</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+      <div>
+        <hr />
+      </div>
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
