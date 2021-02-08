@@ -41,25 +41,51 @@
               <div class="col-lg-10 col-xl-7 mx-auto">
                 <h3 class="display-4">Login Here!</h3>
                 <p class="text-muted mb-4">Please Login To Proceed</p>
-                <form>
+                <form [formGroup]="signInForm" (submit)="onSubmit()" novalidate>
                   <div class="form-group mb-3">
                     <input
-                      id="inputEmail"
                       type="email"
-                      placeholder="Email address"
-                      required=""
-                      autofocus=""
+                      placeholder="email"
+                      formControlName="email"
+                      [ngClass]="{
+                        'is-invalid':
+                          signInForm.get('email').errors &&
+                          signInForm.get('email').touched
+                      }"
                       class="form-control rounded-pill border-0 shadow-sm px-4"
                     />
+                    <div
+                      *ngIf="signInForm.get('email').hasError('required')"
+                      class="invalid-feedback ml-2"
+                    >
+                      email is required!
+                    </div>
+
+                    <div
+                      *ngIf="signInForm.get('email').hasError('pattern')"
+                      class="invalid-feedback ml-2"
+                    >
+                      email must be valid!
+                    </div>
                   </div>
                   <div class="form-group mb-3">
                     <input
-                      id="inputPassword"
                       type="password"
-                      placeholder="Password"
-                      required=""
+                      placeholder="password"
+                      formControlName="password"
+                      [ngClass]="{
+                        'is-invalid':
+                          signInForm.get('password').errors &&
+                          signInForm.get('password').touched
+                      }"
                       class="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
                     />
+                    <div
+                      *ngIf="signInForm.get('password').hasError('required')"
+                      class="invalid-feedback ml-2"
+                    >
+                      password is required!
+                    </div>
                   </div>
                   <button
                     type="submit"

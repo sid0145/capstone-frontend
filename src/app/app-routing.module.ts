@@ -11,8 +11,10 @@ import { DevelopersDetailPageComponent } from "./components/pages/developers-det
 import { JavaDeveopersComponent } from "./components/pages/java-deveopers/java-deveopers.component";
 import { TeamDetailsComponent } from "./components/team-details/team-details.component";
 
+import { AdminLandingPageModule } from "./admin-landing-page/admin-landing-page.module";
+
 const routes: Routes = [
-  { path: "home", component: HomeComponent },
+  { path: "dashboard", component: HomeComponent },
 
   //***************details page */
   { path: "ourStory", component: OutstoryComponent },
@@ -33,12 +35,21 @@ const routes: Routes = [
     path: "developer-detail-page/:id",
     component: DevelopersDetailPageComponent,
   },
+
+  //********************************admin page */
+  {
+    path: "admin/dashboard",
+    loadChildren: () =>
+      import("./admin-landing-page/admin-landing-page.module").then(
+        (m) => m.AdminLandingPageModule
+      ),
+  },
   //**************************auth goes here */
   { path: "login", component: LoginComponent },
   { path: "resister", component: ResisterComponent },
   {
     path: "**",
-    redirectTo: "home",
+    redirectTo: "dashboard",
   },
 ];
 

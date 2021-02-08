@@ -22,10 +22,10 @@ import { ServicePageComponent } from "./components/service-page/service-page.com
 import { TestimonialPageComponent } from "./components/testimonial-page/testimonial-page.component";
 import { ContactUsComponent } from "./components/contact-us/contact-us.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { JavaDeveopersComponent } from './components/pages/java-deveopers/java-deveopers.component';
-import { AngularDeveopersComponent } from './components/pages/angular-deveopers/angular-deveopers.component';
-import { FaqComponent } from './components/static/faq/faq.component';
-import { DevelopersDetailPageComponent } from './components/pages/developers-detail-page/developers-detail-page.component';
+import { JavaDeveopersComponent } from "./components/pages/java-deveopers/java-deveopers.component";
+import { AngularDeveopersComponent } from "./components/pages/angular-deveopers/angular-deveopers.component";
+import { FaqComponent } from "./components/static/faq/faq.component";
+import { DevelopersDetailPageComponent } from "./components/pages/developers-detail-page/developers-detail-page.component";
 
 @NgModule({
   declarations: [
