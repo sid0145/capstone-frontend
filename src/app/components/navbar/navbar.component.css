@@ -19,7 +19,7 @@
 }
 
 .navbar {
-  background-color: #eeb20e;
+  border-bottom: 3px solid #eeb20e;
 }
 a {
   padding: 10px 20px;
@@ -28,6 +28,21 @@ a {
   text-transform: none;
   color: #fff;
 }
+a:hover {
+  background-color: #ec8a09;
+  border-radius: 5px;
+}
+.active {
+  background-color: #ec8a09;
+  border-radius: 5px;
+}
 .dropdown-item {
   color: black;
+}
+.back-to-top {
+  z-index: 1;
+  background-color: #47b2e4;
+  position: fixed;
+  bottom: 25px;
+  right: 10px;
 }

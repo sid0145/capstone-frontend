@@ -42,8 +42,6 @@ export class ResisterComponent implements OnInit {
     if (!this.signUpForm.valid) {
       return;
     }
-    console.log(this.signUpForm.value.email);
-
     this.authService.createUser(
       this.signUpForm.value.username,
       this.signUpForm.value.email,

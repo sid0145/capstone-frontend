@@ -6,6 +6,7 @@ import { Subject } from "rxjs";
 
 import { environment } from "../../../environments/environment";
 import { User } from "./auth.model";
+import jwt_decode from "jwt-decode";
 
 const BACKEND_URL = environment.api_url;
 
@@ -17,9 +18,9 @@ export class AuthService {
   username: string;
   tokenTimer: any;
   isAuthenticated: boolean = false;
-  isAdmin: boolean = false;
+  role: string;
   private authStatusListner = new Subject<boolean>();
-  private adminStatusListner = new Subject<boolean>();
+  private adminStatusListner = new Subject<string>();
 
   constructor(
     private http: HttpClient,
@@ -30,8 +31,10 @@ export class AuthService {
   //**************************Creating new Account */
   createUser(username: string, email: string, password: string) {
     const data = { username: username, email: email, password: password };
+    console.log(data);
     this.http.post(`${BACKEND_URL}/signUp`, data).subscribe(
       (data) => {
+        console.log(data);
         this.router.navigate(["/login"]);
         this.toastrService.success("Account created! Please login", "success", {
           timeOut: 3000,
@@ -55,8 +58,8 @@ export class AuthService {
   }
 
   //**admin check */
-  getIsAdmin() {
-    return this.isAdmin;
+  getRole() {
+    return this.role;
   }
   getAdminStatusListner() {
     return this.adminStatusListner.asObservable();
@@ -81,7 +84,7 @@ export class AuthService {
         token: string;
         username: string;
         expiresIn: number;
-        isAdmin: any;
+        role: string;
       }>(`${BACKEND_URL}/signIn`, data)
       .subscribe(
         (response) => {
@@ -92,20 +95,15 @@ export class AuthService {
             this.setAuthTimer(expiresInDuration);
             this.isAuthenticated = true;
             this.username = response.username;
-            const isAdmin = response.isAdmin;
-            this.isAdmin = isAdmin;
+            const role = response.role;
+            this.role = role;
             const now = new Date();
             const expirationDate = new Date(
               now.getTime() + expiresInDuration * 1000
             );
-            this.saveAuthData(
-              token,
-              expirationDate,
-              this.username,
-              this.isAdmin
-            );
+            this.saveAuthData(token, expirationDate, this.username, this.role);
             this.authStatusListner.next(true);
-            this.adminStatusListner.next(response.isAdmin);
+            this.adminStatusListner.next(response.role);
             this.router.navigate(["/"]);
             this.toastrService.success("Successfully Logged In!", "success", {
               timeOut: 3000,
@@ -114,12 +112,22 @@ export class AuthService {
         },
         (err) => {
           this.authStatusListner.next(false);
-          this.adminStatusListner.next(false);
+          this.adminStatusListner.next(null);
           this.toastrService.error("User not found", "error", {
             timeOut: 3000,
           });
         }
       );
+  }
+
+  //*decode token
+
+  decodeToken(token: string) {
+    try {
+      return jwt_decode(token);
+    } catch (Error) {
+      return null;
+    }
   }
 
   //***************setting token time validation */
@@ -134,12 +142,12 @@ export class AuthService {
     token: string,
     expirationDate: Date,
     username: string,
-    isAdmin: boolean
+    role: string
   ) {
     localStorage.setItem("token", token);
     localStorage.setItem("expiration", expirationDate.toISOString());
     localStorage.setItem("username", username);
-    localStorage.setItem("isAdmin", isAdmin.toString());
+    localStorage.setItem("role", role);
   }
 
   //*******************clearing the local storage after logout
@@ -147,7 +155,7 @@ export class AuthService {
     localStorage.removeItem("token");
     localStorage.removeItem("expiration");
     localStorage.removeItem("username");
-    localStorage.removeItem("isAdmin");
+    localStorage.removeItem("role");
   }
 
   //**************************automating the logout or setting token on particular time
@@ -163,7 +171,6 @@ export class AuthService {
       this.token = autoUserAuth.token;
       this.isAuthenticated = true;
       this.username = autoUserAuth.username;
-      this.isAdmin = JSON.parse(autoUserAuth.isAdmin);
       this.setAuthTimer(expiresIn / 1000);
       this.authStatusListner.next(true);
     }
@@ -174,7 +181,7 @@ export class AuthService {
     const token = localStorage.getItem("token");
     const expirationDate = localStorage.getItem("expiration");
     const username = localStorage.getItem("username");
-    const isAdmin = localStorage.getItem("isAdmin");
+    const role = localStorage.getItem("role");
     if (!token || !expirationDate) {
       return;
     }
@@ -182,7 +189,7 @@ export class AuthService {
       token: token,
       expirationDate: new Date(expirationDate),
       username: username,
-      isAdmin: isAdmin,
+      role: role,
     };
   }
 
@@ -192,7 +199,7 @@ export class AuthService {
     this.isAuthenticated = false;
     this.authStatusListner.next(false);
     this.username = null;
-    this.isAdmin = null;
+    this.role = null;
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
     this.router.navigate(["/login"]);

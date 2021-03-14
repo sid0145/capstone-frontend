@@ -4,12 +4,11 @@
 @import "~bootswatch/dist/yeti/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
 @import "~ngx-toastr/toastr";
+@import "~ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css";
+@import "~ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css";
 html,
 body {
   font-family: "Lato", sans-serif;
   font-family: "Lexend Mega", sans-serif;
   margin: 0;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

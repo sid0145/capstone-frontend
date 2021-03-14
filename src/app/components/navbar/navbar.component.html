@@ -29,7 +29,7 @@
       [ngbCollapse]="isCollapsed"
     >
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown" ngbDropdown>
+        <li class="nav-item dropdown ml-3" ngbDropdown>
           <a
             *ngIf="userIsAuthenticated"
             class="nav-link dropdown-toggle"
@@ -46,33 +46,99 @@
             >
           </div>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-            Hire Developers
+
+        <!-- developers  -->
+        <li class="nav-item dropdown ml-3" ngbDropdown>
+          <a
+            *ngIf="userIsAuthenticated"
+            class="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            ngbDropdownToggle
+          >
+            Our Developers
           </a>
-          <ul class="dropdown-menu bg-info">
-            <li>
-              <a class="dropdown-item" routerLink="/angular-developers">
-                Angular Developers</a
-              >
-            </li>
-            <li><a class="dropdown-item" href="#"> Node Developers </a></li>
-            <li><a class="dropdown-item" href="#"> Python Developers</a></li>
-            <li>
-              <a class="dropdown-item" routerLink="/java-developers">
-                Java Developers</a
-              >
-            </li>
-          </ul>
+          <div class="dropdown-menu" ngbDropdownMenu>
+            <a
+              class="dropdown-item"
+              ngbDropdownItem
+              routerLink="/angular-developers"
+            >
+              Angular Developers</a
+            >
+
+            <a class="dropdown-item" ngbDropdownItem href="#">
+              Node Developers
+            </a>
+            <a class="dropdown-item" ngbDropdownItem href="#">
+              Python Developers</a
+            >
+
+            <a
+              class="dropdown-item"
+              ngbDropdownItem
+              routerLink="/java-developers"
+            >
+              Java Developers</a
+            >
+          </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="contact-us">ContactUs</a>
+
+        <!-- developers end here -->
+
+        <li class="nav-item ml-3">
+          <a class="nav-link" routerLink="products" routerLinkActive="active"
+            >Products</a
+          >
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/ourStory">Our Story</a>
+
+        <!-- more goes here -->
+
+        <!-- developers  -->
+        <li class="nav-item dropdown ml-3" ngbDropdown>
+          <a
+            class="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            ngbDropdownToggle
+          >
+            More
+          </a>
+          <div class="dropdown-menu" ngbDropdownMenu>
+            <a class="dropdown-item" ngbDropdownItem routerLink="/ourStory">
+              Our Story</a
+            >
+            <a class="dropdown-item" ngbDropdownItem routerLink="/"> Culture</a>
+            <a class="dropdown-item" ngbDropdownItem routerLink="/">
+              Our Blog</a
+            >
+          </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/login" *ngIf="!userIsAuthenticated"
+
+        <!-- ends here -->
+        <li class="nav-item ml-3">
+          <a
+            class="nav-link"
+            routerLink="/current-opening"
+            *ngIf="userIsAuthenticated"
+            >Jobs</a
+          >
+        </li>
+
+        <li class="nav-item ml-3">
+          <a class="nav-link" routerLink="us-page" routerLinkActive="active"
+            >Why Us</a
+          >
+        </li>
+
+        <li class="nav-item ml-2">
+          <a
+            class="nav-link"
+            routerLink="/login"
+            *ngIf="!userIsAuthenticated"
+            routerLinkActive="active"
             >Resister</a
           >
         </li>
@@ -80,7 +146,7 @@
           <a
             class="nav-link"
             routerLink="/admin/dashboard"
-            *ngIf="userIsAuthenticated && isAdmin"
+            *ngIf="userIsAuthenticated && role === 'admin'"
             >Admin</a
           >
         </li>
@@ -88,3 +154,11 @@
     </div>
   </div>
 </nav>
+<!-- scroll to top -->
+<a
+  id="back-to-top"
+  href="#"
+  class="btn btn-light btn-lg back-to-top text-warning"
+  role="button"
+  ><i class="fa fa-chevron-up"></i
+></a>
