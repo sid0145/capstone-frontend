@@ -1,3 +1,11 @@
+.spinner {
+  padding: 90px 0;
+}
+.spinner-border {
+  width: 200px;
+  height: 200px;
+}
+
 a {
   text-decoration: none;
   font-size: 16px;
@@ -9,12 +17,10 @@ a {
 # Sections General
 --------------------------------------------------------------*/
 section {
-  padding: 60px 0;
+  padding-top: 60px;
   overflow: hidden;
-}
-
-.section-bg {
-  background-color: #fff;
+  background: url(../../../../assets/background-static.png) top center no-repeat;
+  background-size: cover;
 }
 
 .section-title {
@@ -62,81 +68,26 @@ section {
 # Team
 --------------------------------------------------------------*/
 .team {
-  background: #fff;
   padding: 60px 0;
+  width: 100%;
+  height: 100vh;
+  background: url(../../../../assets/background-static.png) top center no-repeat;
+  background-size: cover;
 }
 
-.team .member {
-  margin-bottom: 20px;
-  overflow: hidden;
-  border-radius: 5px;
-  background: #fff;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-}
-
-.team .member .member-img {
+.table-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
   position: relative;
-  overflow: hidden;
 }
 
-.team .member .social {
-  position: absolute;
-  left: 0;
-  bottom: 30px;
-  right: 0;
-  opacity: 0;
-  transition: ease-in-out 0.3s;
-  text-align: center;
+mat-table {
+  overflow: auto;
+  max-height: 500px;
 }
 
-.team .member .social a {
-  transition: color 0.3s;
-  color: #2a2c39;
-  margin: 0 3px;
-  padding-top: 7px;
-  border-radius: 50px;
-  width: 36px;
-  height: 36px;
-  background: rgba(239, 102, 3, 0.8);
-  display: inline-block;
-  transition: ease-in-out 0.3s;
-  color: #fff;
-}
-
-.team .member .social a:hover {
-  background: #fc8129;
-}
-
-.team .member .social i {
-  font-size: 18px;
-}
-
-.team .member .member-info {
-  padding: 25px 15px;
-}
-
-.team .member .member-info h4 {
-  font-weight: 700;
-  margin-bottom: 5px;
-  font-size: 18px;
-  color: #2a2c39;
-}
-
-.team .member .member-info span {
-  display: block;
-  font-size: 13px;
-  font-weight: 400;
-  color: #aaaaaa;
-}
-
-.team .member .member-info p {
-  font-style: italic;
-  font-size: 14px;
-  line-height: 26px;
-  color: #777777;
-}
-
-.team .member:hover .social {
-  opacity: 1;
-  bottom: 15px;
+.w-75 {
+  max-width: 10px;
 }

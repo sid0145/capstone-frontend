@@ -1,58 +1,57 @@
-<div
-  *ngIf="isLoading"
-  class="d-flex h-100 align-items-center justify-content-center mt-5"
->
-  <div class="spinner-grow text-primary" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
-  <div class="spinner-grow text-secondary" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
-  <div class="spinner-grow text-success" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
-  <div class="spinner-grow text-danger" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
-  <div class="spinner-grow text-warning" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
-  <div class="spinner-grow text-info" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
-  <div class="spinner-grow text-light" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
-  <div class="spinner-grow text-dark" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
-</div>
-<div class="card m-0">
-  <div class="container-fluid">
-    <div class="row no-gutter">
-      <!-- The image half -->
-      <div class="col-md-6 d-none d-md-flex bg-image"></div>
+<!-- login template -->
 
-      <!-- The right-->
-      <div class="col-md-6 bg-light">
-        <div class="login d-flex align-items-center py-5">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-10 col-xl-7 mx-auto">
-                <h3 class="display-4">Login Here!</h3>
-                <p class="text-muted mb-4">Please Login To Proceed</p>
+<div class="main">
+  <header id="home-section">
+    <div class="dark-overlay">
+      <div class="home-inner container">
+        <div class="row">
+          <div class="col-lg-8 d-none d-lg-block">
+            <h1 class="display-4">
+              Build Your platfrom with us. We are team of
+              <strong>GROWFREE </strong>
+            </h1>
+
+            <div class="d-flex">
+              <div class="p-4 align-self-start">
+                <i class="fa fa-check fa-2x"></i>
+              </div>
+              <div class="p-4 align-self-end">
+                We provide a user frindly interface.
+              </div>
+            </div>
+
+            <div class="d-flex">
+              <div class="p-4 align-self-start">
+                <i class="fa fa-check fa-2x"></i>
+              </div>
+              <div class="p-4 align-self-end">Safe and Secure</div>
+            </div>
+
+            <div class="d-flex">
+              <div class="p-4 align-self-start">
+                <i class="fa fa-check fa-2x"></i>
+              </div>
+              <div class="p-4 align-self-end">Easy to use</div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="card bg-primary card-form">
+              <div class="card-body">
+                <h3>Sign In <strong>Now</strong></h3>
+                <br />
                 <form [formGroup]="signInForm" (submit)="onSubmit()" novalidate>
-                  <div class="form-group mb-3">
+                  <div class="form-group">
                     <input
                       type="email"
-                      placeholder="email"
+                      class="form-control form-control-lg"
                       formControlName="email"
+                      placeholder="email"
                       [ngClass]="{
                         'is-invalid':
                           signInForm.get('email').errors &&
                           signInForm.get('email').touched
                       }"
-                      class="form-control rounded-pill border-0 shadow-sm px-4"
                     />
                     <div
                       *ngIf="signInForm.get('email').hasError('required')"
@@ -68,9 +67,11 @@
                       email must be valid!
                     </div>
                   </div>
-                  <div class="form-group mb-3">
+
+                  <div class="form-group">
                     <input
                       type="password"
+                      class="form-control form-control-lg"
                       placeholder="password"
                       formControlName="password"
                       [ngClass]="{
@@ -78,7 +79,6 @@
                           signInForm.get('password').errors &&
                           signInForm.get('password').touched
                       }"
-                      class="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
                     />
                     <div
                       *ngIf="signInForm.get('password').hasError('required')"
@@ -87,28 +87,28 @@
                       password is required!
                     </div>
                   </div>
-                  <button
+
+                  <input
                     type="submit"
-                    class="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm"
-                  >
-                    Sign in
-                  </button>
+                    value="Login"
+                    class="btn btn-outline-warning btn-block"
+                  />
+                </form>
+                <div class="pt-2">
                   <div class="text-center d-flex justify-content-between mt-4">
                     <p>
                       Do'nt have an account?
-                      <a routerLink="/resister" class="font-italic text-muted">
+                      <a routerLink="/resister" class="font-italic text-dark">
                         <u>SignUp!</u></a
                       >
                     </p>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>
-          <!-- End -->
         </div>
       </div>
-      <!-- End -->
     </div>
-  </div>
+  </header>
 </div>

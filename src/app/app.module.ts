@@ -14,7 +14,6 @@ import { HomeComponent } from "./components/home/home.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { OutstoryComponent } from "./components/outstory/outstory.component";
-import { DemoPageComponent } from "./components/demo-page/demo-page.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { TeamDetailsComponent } from "./components/team-details/team-details.component";
 import { AboutUsComponent } from "./components/about-us/about-us.component";
@@ -24,8 +23,19 @@ import { ContactUsComponent } from "./components/contact-us/contact-us.component
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { JavaDeveopersComponent } from "./components/pages/java-deveopers/java-deveopers.component";
 import { AngularDeveopersComponent } from "./components/pages/angular-deveopers/angular-deveopers.component";
-import { FaqComponent } from "./components/static/faq/faq.component";
 import { DevelopersDetailPageComponent } from "./components/pages/developers-detail-page/developers-detail-page.component";
+import { UsPageComponent } from "./components/us-page/us-page.component";
+import { BaseComponent } from "./components/base/base.component";
+import { DevelopersPageComponent } from "./components/developers-page/developers-page.component";
+import { BidProjectPageComponent } from "./components/bid-project-page/bid-project-page.component";
+import { TeamHirePageComponent } from "./components/team-hire-page/team-hire-page.component";
+
+import { CarouselModule } from "ngx-owl-carousel-o";
+import { AppMaterialModule } from "./material.module";
+import { AdminService } from "./admin-landing-page/admin.service";
+import { HirePageComponent } from "./components/hire-page/hire-page.component";
+import { ProductsPageComponent } from "./components/products-page/products-page.component";
+import { JobsPageComponent } from './components/jobs-page/jobs-page.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +45,6 @@ import { DevelopersDetailPageComponent } from "./components/pages/developers-det
     HomeComponent,
     NavbarComponent,
     OutstoryComponent,
-    DemoPageComponent,
     FooterComponent,
     TeamDetailsComponent,
     AboutUsComponent,
@@ -44,8 +53,15 @@ import { DevelopersDetailPageComponent } from "./components/pages/developers-det
     ContactUsComponent,
     JavaDeveopersComponent,
     AngularDeveopersComponent,
-    FaqComponent,
     DevelopersDetailPageComponent,
+    UsPageComponent,
+    BaseComponent,
+    DevelopersPageComponent,
+    BidProjectPageComponent,
+    TeamHirePageComponent,
+    HirePageComponent,
+    ProductsPageComponent,
+    JobsPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,8 +72,10 @@ import { DevelopersDetailPageComponent } from "./components/pages/developers-det
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
+    AppMaterialModule,
+    CarouselModule,
   ],
-  providers: [],
+  providers: [AdminService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

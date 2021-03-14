@@ -1,0 +1,283 @@
+<!-- form goes here -->
+<div class="container">
+  <div class="row mt-5 mb-3 d-flex align-items-center justify-content-center">
+    <div class="col-lg-8 col-md-12 col-sm-12">
+      <div class="card border-primary">
+        <div
+          class="card-header text-center text-primary font-weight-bold bg-warning text-uppercase"
+          *ngIf="!id"
+        >
+          Add A new Developer
+        </div>
+        <div
+          class="card-header text-center text-info bg-dark text-uppercase"
+          *ngIf="id"
+        >
+          Update Memeber
+        </div>
+        <div class="card-body">
+          <form
+            [formGroup]="addDeveloperForm"
+            novalidate
+            (ngSubmit)="onSubmit()"
+          >
+            <!-- name -->
+            <div class="form-group row">
+              <label for="name" class="col-sm-3 col-form-label"
+                >Member Full Name</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  formControlName="name"
+                  class="form-control"
+                  placeholder="enter name"
+                />
+              </div>
+            </div>
+
+            <!-- image -->
+            <div class="form-group row">
+              <label for="name" class="col-sm-3 col-form-label"
+                >Member image</label
+              >
+              <div class="col-sm-9">
+                <button
+                  class="btn btn-primary"
+                  type="button"
+                  (click)="imagePicker.click()"
+                >
+                  Pick Image
+                </button>
+                <input
+                  type="file"
+                  #imagePicker
+                  (change)="onImagePicked($event)"
+                />
+              </div>
+            </div>
+
+            <!-- email -->
+            <div class="form-group row">
+              <label for="name" class="col-sm-3 col-form-label"
+                >Member email</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="email"
+                  formControlName="email"
+                  class="form-control"
+                  placeholder="enter email"
+                />
+              </div>
+            </div>
+
+            <!-- profession -->
+            <div class="form-group row">
+              <label for="name" class="col-sm-3 col-form-label"
+                >Member profession
+              </label>
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  formControlName="profession"
+                  class="form-control"
+                  placeholder="enter member profession "
+                />
+              </div>
+            </div>
+
+            <!-- about -->
+            <div class="form-group row">
+              <label for="bio" class="col-sm-3 col-form-label">about</label>
+              <div class="col-sm-9">
+                <textarea
+                  type="text"
+                  class="form-control"
+                  placeholder="write something about member"
+                  class="form-control"
+                  formControlName="about"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- experience -->
+            <div class="form-group row">
+              <label for="bio" class="col-sm-3 col-form-label"
+                >experience</label
+              >
+              <div class="col-sm-9">
+                <textarea
+                  type="text"
+                  class="form-control"
+                  placeholder="write something about experience"
+                  class="form-control"
+                  formControlName="experience"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- city -->
+            <div class="form-group row">
+              <label for="name" class="col-sm-3 col-form-label"
+                >Member city</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  formControlName="city"
+                  class="form-control"
+                  placeholder="enter city"
+                />
+              </div>
+            </div>
+
+            <!-- state -->
+            <div class="form-group row">
+              <label for="name" class="col-sm-3 col-form-label"
+                >Member state</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  formControlName="state"
+                  class="form-control"
+                  placeholder="enter state"
+                />
+              </div>
+            </div>
+
+            <!-- country -->
+            <div class="form-group row">
+              <label for="name" class="col-sm-3 col-form-label"
+                >Member country</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  formControlName="country"
+                  class="form-control"
+                  placeholder="enter country"
+                />
+              </div>
+            </div>
+
+            <!-- availablity -->
+            <div class="form-group row">
+              <label for="name" class="col-sm-3 col-form-label"
+                >Member available</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  formControlName="available"
+                  class="form-control"
+                  placeholder="enter availablilty"
+                />
+              </div>
+            </div>
+
+            <!-- doller per hour -->
+            <div class="form-group row">
+              <label for="name" class="col-sm-3 col-form-label"
+                >Member price/ hr</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="string"
+                  formControlName="doller"
+                  class="form-control"
+                  placeholder="enter price per hour"
+                />
+              </div>
+            </div>
+
+            <!-- insta link -->
+            <div class="form-group row">
+              <label for="name" class="col-sm-3 col-form-label"
+                >Instagram link</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  formControlName="instagram"
+                  class="form-control"
+                  placeholder="enter instagram link"
+                />
+              </div>
+            </div>
+
+            <!-- linked link -->
+            <div class="form-group row">
+              <label for="name" class="col-sm-3 col-form-label"
+                >LinkedIn link</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  formControlName="linkedIn"
+                  class="form-control"
+                  placeholder="enter instagram link"
+                />
+              </div>
+            </div>
+
+            <!-- faceboook link -->
+            <div class="form-group row">
+              <label for="name" class="col-sm-3 col-form-label"
+                >facebook link</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  formControlName="facebook"
+                  class="form-control"
+                  placeholder="enter instagram link"
+                />
+              </div>
+            </div>
+
+            <!-- github link -->
+            <div class="form-group row">
+              <label for="name" class="col-sm-3 col-form-label"
+                >github link</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  formControlName="github"
+                  class="form-control"
+                  placeholder="enter github link"
+                />
+              </div>
+            </div>
+
+            <!-- portfolio link -->
+            <div class="form-group row">
+              <label for="name" class="col-sm-3 col-form-label"
+                >portfolio link</label
+              >
+              <div class="col-sm-9">
+                <input
+                  type="text"
+                  formControlName="portfolio"
+                  class="form-control"
+                  placeholder="enter portfolio link"
+                />
+              </div>
+            </div>
+
+            <div class="text-center" *ngIf="!id">
+              <button class="btn btn-primary" type="submit">Add member</button>
+            </div>
+            <div class="text-center" *ngIf="id">
+              <button class="btn btn-primary" type="submit">
+                Update member
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
