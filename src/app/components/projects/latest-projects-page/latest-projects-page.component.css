@@ -1,0 +1,15 @@
+.spinner {
+  padding: 90px 0;
+}
+.spinner-border {
+  width: 200px;
+  height: 200px;
+}
+
+.main {
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+button {
+  border-radius: 5px;
+}

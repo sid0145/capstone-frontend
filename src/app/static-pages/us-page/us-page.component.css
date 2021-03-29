@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+
+/*--------------------------------------------------------------
+# Sections
+--------------------------------------------------------------*/
+section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.section-header {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.section-header h2 {
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin: 0;
+  color: #4154f1;
+  text-transform: uppercase;
+}
+
+.section-header p {
+  margin: 10px 0 0 0;
+  padding: 0;
+  font-size: 38px;
+  line-height: 42px;
+  font-weight: 700;
+  color: #012970;
+}
+
+@media (max-width: 768px) {
+  .section-header p {
+    font-size: 28px;
+    line-height: 32px;
+  }
+}
+
+.title {
+  color: #34323b;
+  font-weight: 800;
+  font-size: 2rem;
+  padding: 1rem;
+  text-transform: uppercase;
+}
+.headline {
+  color: #34323b;
+  padding: 1rem 0;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+p {
+  /* font-size: 1.2rem; */
+  font-family: Open Sans, Arial, sans-serif;
+  font-weight: 100;
+}
+.text {
+  margin: 1rem 0;
+}
+.head {
+  font-size: 1.2rem;
+}
+ul li {
+  margin: 1rem 0;
+}
+.bttn {
+  background-color: rgb(255, 136, 0);
+  text-align: center;
+  border-radius: 8px;
+}
+a {
+  text-transform: uppercase;
+  text-decoration: none;
+}

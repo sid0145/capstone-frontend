@@ -7,6 +7,7 @@ import { Subject } from "rxjs";
 import { environment } from "../../../environments/environment";
 import { User } from "./auth.model";
 import jwt_decode from "jwt-decode";
+import { ContentObserver } from "@angular/cdk/observers";
 
 const BACKEND_URL = environment.api_url;
 
@@ -19,8 +20,8 @@ export class AuthService {
   tokenTimer: any;
   isAuthenticated: boolean = false;
   role: string;
+  userId: string;
   private authStatusListner = new Subject<boolean>();
-  private adminStatusListner = new Subject<string>();
 
   constructor(
     private http: HttpClient,
@@ -57,12 +58,14 @@ export class AuthService {
     return this.isAuthenticated;
   }
 
+  //*****************getUser id */
+  getUserId() {
+    return this.userId;
+  }
+
   //**admin check */
   getRole() {
     return this.role;
-  }
-  getAdminStatusListner() {
-    return this.adminStatusListner.asObservable();
   }
   //*************** */
 
@@ -85,6 +88,7 @@ export class AuthService {
         username: string;
         expiresIn: number;
         role: string;
+        userId: string;
       }>(`${BACKEND_URL}/signIn`, data)
       .subscribe(
         (response) => {
@@ -95,15 +99,21 @@ export class AuthService {
             this.setAuthTimer(expiresInDuration);
             this.isAuthenticated = true;
             this.username = response.username;
+            this.userId = response.userId;
             const role = response.role;
             this.role = role;
             const now = new Date();
             const expirationDate = new Date(
               now.getTime() + expiresInDuration * 1000
             );
-            this.saveAuthData(token, expirationDate, this.username, this.role);
+            this.saveAuthData(
+              token,
+              expirationDate,
+              this.username,
+              this.role,
+              this.userId
+            );
             this.authStatusListner.next(true);
-            this.adminStatusListner.next(response.role);
             this.router.navigate(["/"]);
             this.toastrService.success("Successfully Logged In!", "success", {
               timeOut: 3000,
@@ -112,7 +122,6 @@ export class AuthService {
         },
         (err) => {
           this.authStatusListner.next(false);
-          this.adminStatusListner.next(null);
           this.toastrService.error("User not found", "error", {
             timeOut: 3000,
           });
@@ -142,12 +151,14 @@ export class AuthService {
     token: string,
     expirationDate: Date,
     username: string,
-    role: string
+    role: string,
+    userId: string
   ) {
     localStorage.setItem("token", token);
     localStorage.setItem("expiration", expirationDate.toISOString());
     localStorage.setItem("username", username);
     localStorage.setItem("role", role);
+    localStorage.setItem("userId", userId);
   }
 
   //*******************clearing the local storage after logout
@@ -156,6 +167,7 @@ export class AuthService {
     localStorage.removeItem("expiration");
     localStorage.removeItem("username");
     localStorage.removeItem("role");
+    localStorage.removeItem("userId");
   }
 
   //**************************automating the logout or setting token on particular time
@@ -171,6 +183,8 @@ export class AuthService {
       this.token = autoUserAuth.token;
       this.isAuthenticated = true;
       this.username = autoUserAuth.username;
+      this.role = autoUserAuth.role;
+      this.userId = autoUserAuth.userId;
       this.setAuthTimer(expiresIn / 1000);
       this.authStatusListner.next(true);
     }
@@ -182,6 +196,7 @@ export class AuthService {
     const expirationDate = localStorage.getItem("expiration");
     const username = localStorage.getItem("username");
     const role = localStorage.getItem("role");
+    const userId = localStorage.getItem("userId");
     if (!token || !expirationDate) {
       return;
     }
@@ -190,6 +205,7 @@ export class AuthService {
       expirationDate: new Date(expirationDate),
       username: username,
       role: role,
+      userId: userId,
     };
   }
 
@@ -200,6 +216,7 @@ export class AuthService {
     this.authStatusListner.next(false);
     this.username = null;
     this.role = null;
+    this.userId = null;
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
     this.router.navigate(["/login"]);

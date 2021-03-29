@@ -14,7 +14,6 @@ export class NavbarComponent implements OnInit {
   userIsAuthenticated: boolean;
   username: string;
   authSub: Subscription;
-  adminSub: Subscription;
   role: string;
   constructor(private authService: AuthService) {}
   ngOnInit() {
@@ -26,13 +25,9 @@ export class NavbarComponent implements OnInit {
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
         this.username = this.authService.getUserName();
+        this.role = this.authService.getRole();
+        console.log(this.role);
       });
-    this.adminSub = this.authService
-      .getAdminStatusListner()
-      .subscribe((role) => {
-        this.role = role;
-      });
-
     /*******************scroll code */
     $(document).ready(function () {
       $(window).scroll(function () {
@@ -53,16 +48,6 @@ export class NavbarComponent implements OnInit {
         return false;
       });
     });
-
-    // //**************** setting opacity to the header/
-
-    // window.addEventListener("scroll", function () {
-    //   if (window.scrollY > 150) {
-    //     document.querySelector(".navbar").style.opacity = 0.9;
-    //   } else {
-    //     document.querySelector(".navbar").style.opacity = 1;
-    //   }
-    // });
   }
 
   onLogout() {
@@ -71,6 +56,5 @@ export class NavbarComponent implements OnInit {
   }
   ngOnDestroy() {
     this.authSub.unsubscribe();
-    this.adminSub.unsubscribe();
   }
 }
