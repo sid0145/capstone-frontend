@@ -1,0 +1,9 @@
+table {
+  width: 100%;
+}
+.menu-bar {
+  position: absolute;
+  right: 60px;
+  color: #fff;
+  background-color: #f18304;
+}

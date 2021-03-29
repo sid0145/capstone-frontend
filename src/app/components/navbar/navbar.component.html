@@ -28,8 +28,9 @@
       id="#navbarMain"
       [ngbCollapse]="isCollapsed"
     >
+      <!-- profile section  -->
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown ml-3" ngbDropdown>
+        <li class="nav-item dropdown mx-2" ngbDropdown>
           <a
             *ngIf="userIsAuthenticated"
             class="nav-link dropdown-toggle"
@@ -40,15 +41,43 @@
             >{{ username }}</a
           >
           <div class="dropdown-menu" ngbDropdownMenu>
-            <a class="dropdown-item" ngbDropdownItem href="#">Edit Profile</a>
-            <a class="dropdown-item btn" ngbDropdownItem (click)="onLogout()"
+            <a class="dropdown-item" ngbDropdownItem href="#">Project Cart</a>
+            <a class="dropdown-item" ngbDropdownItem (click)="onLogout()"
               >Logout</a
             >
           </div>
         </li>
+        <!-- project section -->
+        <li class="nav-item dropdown mx-2" ngbDropdown>
+          <a
+            *ngIf="userIsAuthenticated"
+            class="nav-link dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            ngbDropdownToggle
+            >Projects</a
+          >
+          <div class="dropdown-menu" ngbDropdownMenu>
+            <li *ngIf="userIsAuthenticated">
+              <a class="dropdown-item" routerLink="/latest-projects"
+                >Latest Projects</a
+              >
+            </li>
+
+            <li *ngIf="userIsAuthenticated">
+              <a
+                class="dropdown-item"
+                routerLink="/upload-project"
+                *ngIf="role === 'user' || role === 'admin'"
+                >Upload Project</a
+              >
+            </li>
+          </div>
+        </li>
 
         <!-- developers  -->
-        <li class="nav-item dropdown ml-3" ngbDropdown>
+        <li class="nav-item dropdown" ngbDropdown>
           <a
             *ngIf="userIsAuthenticated"
             class="nav-link dropdown-toggle"
@@ -84,19 +113,9 @@
             >
           </div>
         </li>
-
         <!-- developers end here -->
-
-        <li class="nav-item ml-3">
-          <a class="nav-link" routerLink="products" routerLinkActive="active"
-            >Products</a
-          >
-        </li>
-
         <!-- more goes here -->
-
-        <!-- developers  -->
-        <li class="nav-item dropdown ml-3" ngbDropdown>
+        <li class="nav-item dropdown mx-2" ngbDropdown>
           <a
             class="nav-link dropdown-toggle"
             data-toggle="dropdown"
@@ -107,18 +126,29 @@
             More
           </a>
           <div class="dropdown-menu" ngbDropdownMenu>
-            <a class="dropdown-item" ngbDropdownItem routerLink="/ourStory">
-              Our Story</a
-            >
-            <a class="dropdown-item" ngbDropdownItem routerLink="/"> Culture</a>
-            <a class="dropdown-item" ngbDropdownItem routerLink="/">
-              Our Blog</a
-            >
+            <li>
+              <a class="dropdown-item" ngbDropdownItem routerLink="/ourStory">
+                Our Story</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" ngbDropdownItem routerLink="/">
+                Culture</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" ngbDropdownItem routerLink="/">
+                Our Blog</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="us-page">Why Us</a>
+            </li>
           </div>
         </li>
 
         <!-- ends here -->
-        <li class="nav-item ml-3">
+        <li class="nav-item mx-2">
           <a
             class="nav-link"
             routerLink="/current-opening"
@@ -127,13 +157,7 @@
           >
         </li>
 
-        <li class="nav-item ml-3">
-          <a class="nav-link" routerLink="us-page" routerLinkActive="active"
-            >Why Us</a
-          >
-        </li>
-
-        <li class="nav-item ml-2">
+        <li class="nav-item mx-2">
           <a
             class="nav-link"
             routerLink="/login"
@@ -142,11 +166,12 @@
             >Resister</a
           >
         </li>
-        <li class="nav-item">
+        -
+        <li class="nav-item" *ngIf="userIsAuthenticated">
           <a
             class="nav-link"
             routerLink="/admin/dashboard"
-            *ngIf="userIsAuthenticated && role === 'admin'"
+            *ngIf="role === 'admin'"
             >Admin</a
           >
         </li>

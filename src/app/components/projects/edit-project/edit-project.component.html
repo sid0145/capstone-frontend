@@ -1,0 +1,179 @@
+<div
+  class="spinner d-flex justify-content-center text-warning text-bold"
+  *ngIf="isLoading"
+>
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div class="container upload-main" *ngIf="!isLoading">
+  <div class="row">
+    <div class="col-md-6">
+      <a routerLink="/latest-projects" class="btn btn-link">
+        <i class="fa fa-arrow-circle-o-left"></i>
+        Back To Projects page
+      </a>
+    </div>
+    <div class="col-md-6"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-header bg-warning">Update Your Project</div>
+    <div class="card-body">
+      <form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)">
+        <!-- projectname -->
+        <div class="form-group">
+          <label for="projectname">Choose a name For your project</label>
+          <input
+            type="text"
+            name="projectName"
+            [(ngModel)]="projectData.projectName"
+            class="form-control"
+            #projectuploadname="ngModel"
+            placeholder="Choose a poject name"
+            minlength="8"
+            required
+            [ngClass]="{
+              'is-invalid':
+                projectuploadname.errors && projectuploadname.touched
+            }"
+          />
+
+          <div
+            [hidden]="!projectuploadname.errors?.required"
+            class="invalid-feedback"
+          >
+            project name is required!
+          </div>
+
+          <div
+            [hidden]="!projectuploadname.errors?.minlength"
+            class="invalid-feedback"
+          >
+            project name should be atleast 8 charactes long!
+          </div>
+        </div>
+
+        <!-- about project -->
+        <div class="form-group">
+          <label for="aboutproject">Tell us something about project</label>
+          <textarea
+            name="aboutProject"
+            type="text"
+            class="form-control"
+            placeholder="write something about project"
+            class="form-control"
+            [(ngModel)]="projectData.aboutProject"
+            #projectuploadabout="ngModel"
+            required
+            minlength="30"
+            [ngClass]="{
+              'is-invalid':
+                projectuploadabout.errors && projectuploadabout.touched
+            }"
+          ></textarea>
+
+          <div
+            [hidden]="!projectuploadabout.errors?.required"
+            class="invalid-feedback"
+          >
+            about is required field
+          </div>
+
+          <div
+            [hidden]="!projectuploadabout.errors?.minlength"
+            class="invalid-feedback"
+          >
+            about must be 30 charactes long!
+          </div>
+        </div>
+
+        <!-- skills -->
+        <div class="form-group">
+          <label for="skill">What skills are required?</label>
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            name="skill"
+            [(ngModel)]="projectData.skill"
+            class="form-control"
+          >
+            <option value="website design">Website Design</option>
+            <option value="other">others</option>
+          </select>
+        </div>
+
+        <div class="form-group payment">
+          <label>How do you pay</label>
+          <div class="row">
+            <div class="col-md-6">
+              <i>choose one</i>
+              <select
+                class="form-control"
+                name="paymentMethod"
+                id="select1"
+                [(ngModel)]="projectData.paymentMethod"
+                class="form-control"
+              >
+                <option value="Pay fixed Price">Pay fixed Price</option>
+                <option value="Pay per Hour">Pay per Hour</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <i>choose one</i>
+              <select
+                class="form-control"
+                id="select2"
+                name="esimatedBudget"
+                [(ngModel)]="projectData.esimatedBudget"
+                class="form-control"
+                required
+              >
+                <option value="Pay fixed Price">
+                  Simple Project($30.00- $250.00)
+                </option>
+                <option value="Pay fixed Price">
+                  Small Project($40.00- $250.00)
+                </option>
+                <option value="Pay fixed Price">
+                  Medium Project($1500.00- $2500.00)
+                </option>
+                <option value="Pay fixed Price">
+                  Large Project($2500.00- $3500.00)
+                </option>
+                <option value="Pay fixed Price">
+                  Huge Project($25000.00- $35000.00)
+                </option>
+                <option value="Pay fixed Price">
+                  Major Project($35000.00+)
+                </option>
+                <option value="Pay per Hour">
+                  Basic ($2.00 - $8.00 per hour)
+                </option>
+                <option value="Pay per Hour">
+                  Moderate ($8.00 - $15.00 per hour)
+                </option>
+                <option value="Pay per Hour">
+                  Standard ($15.00 - $25.00 per hour)
+                </option>
+                <option value="Pay per Hour">
+                  Skilled ($25.00 - $50.00 per hour)
+                </option>
+                <option value="Pay per Hour">Expert ($50.00+ per hour)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          [disabled]="projectForm.invalid"
+          class="btn btn-warning text-center"
+        >
+          Update Project
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

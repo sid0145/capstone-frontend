@@ -1,0 +1,58 @@
+<div
+  class="spinner d-flex justify-content-center text-warning text-bold"
+  *ngIf="isLoading"
+>
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div class="main" *ngIf="!isLoading && projects.length > 0">
+  <div class="container">
+    <h1 class="text-center py-2">All Projects</h1>
+    <hr />
+    <div class="row">
+      <div class="col-md-3 mt-2" *ngFor="let project of projects">
+        <div class="card">
+          <img
+            class="card-img-top"
+            src="../../../../assets/project-image-header (1).jpg"
+            alt="Card image cap"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ project.projectName }}</h5>
+            <hr />
+            <div class="card-text text-center">
+              <button
+                class="btn btn-primary px-2 ml-2"
+                (click)="viewProject(project._id)"
+              >
+                get info
+              </button>
+
+              <button
+                class="btn btn-warning px-2 ml-2"
+                *ngIf="project.creator === userId"
+                routerLink="/edit-project/{{ project._id }}"
+              >
+                edit
+              </button>
+              <button
+                class="btn btn-danger px-2 ml-2"
+                *ngIf="project.creator === userId"
+                (click)="onDelete(project._id)"
+              >
+                delete
+              </button>
+            </div>
+            <p class="card-text">
+              <b class="text-muted"
+                >uploaded at: {{ project.date | date: "fullDate" }}</b
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

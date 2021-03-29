@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { AdminGuard } from "../services/auth/admin.guard";
 import { AuthGuard } from "../services/auth/auth.guard";
 import { AdminDashboardComponent } from "./admin-dashboard/admin-dashboard.component";
+import { AdminGuard } from "./admin.guard";
 import { AddDeveloperComponent } from "./pages/add-developer/add-developer.component";
 import { AngularDeveloperComponent } from "./pages/angular-developer/angular-developer.component";
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
@@ -15,35 +15,43 @@ const routes: Routes = [
   {
     path: "",
     component: AdminDashboardComponent,
+    canActivate: [AuthGuard],
 
     children: [
       {
         path: "main",
         component: DashboardComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: "users",
         component: UsersComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: "developers",
         component: DevelopersComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: "requests",
         component: RequestComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: "angular-developer",
         component: AngularDeveloperComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: "angular-developer/new",
         component: AddDeveloperComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: "projects",
         component: ProjectComponent,
+        canActivate: [AuthGuard],
       },
     ],
   },
@@ -51,6 +59,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [AuthGuard, AdminGuard],
+  providers: [AuthGuard],
 })
 export class AdminRoutingModule {}

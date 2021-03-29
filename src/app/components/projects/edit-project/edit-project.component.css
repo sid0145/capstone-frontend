@@ -1,0 +1,52 @@
+.upload-main {
+  padding-top: 70px;
+  padding-bottom: 20px;
+}
+.card {
+  border-radius: 5px;
+}
+.card-header {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  text-align: center;
+}
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+input {
+  border-radius: 5px;
+}
+textarea {
+  border-radius: 5px;
+}
+select {
+  border-radius: 5px;
+}
+
+.payment {
+  border-radius: 5px;
+}
+button {
+  border-radius: 3px;
+  text-transform: uppercase;
+  padding: 5px;
+  text-align: center;
+}
+.spinner {
+  padding: 90px 0;
+}
+.spinner-border {
+  width: 200px;
+  height: 200px;
+}
+
+.main {
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+button {
+  border-radius: 5px;
+}

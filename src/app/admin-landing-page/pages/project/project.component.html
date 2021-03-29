@@ -1,1 +1,65 @@
-<p>project works!</p>
+<mat-toolbar>
+  <mat-form-field color="accent">
+    <input
+      matInput
+      (keyup)="filterByItem($event.target.value)"
+      placeholder="Filter"
+    />
+  </mat-form-field>
+</mat-toolbar>
+
+<div class="table-container mat-elevation-z8">
+  <div class="mat-elevation-z8">
+    <div class="loading" *ngIf="isLoading">
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
+    </div>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- firstname Column -->
+    <ng-container matColumnDef="projectname">
+      <th mat-header-cell *matHeaderCellDef>ProjectName</th>
+      <td mat-cell *matCellDef="let project">{{ project.projectName }}</td>
+    </ng-container>
+
+    <!-- lastname Column -->
+    <ng-container matColumnDef="author">
+      <th mat-header-cell *matHeaderCellDef>Author</th>
+      <td mat-cell *matCellDef="let project">{{ project.charges }}</td>
+    </ng-container>
+
+    <!-- date Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let project">{{ project.date | date }}</td>
+    </ng-container>
+
+    <!-- Action -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let project">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="edit(project._id)">
+            <mat-icon>pageview</mat-icon>
+            <span>view</span>
+          </button>
+          <button mat-menu-item (click)="deleteHandler(project._id)">
+            <mat-icon>delete</mat-icon>
+            <span>delete</span>
+          </button>
+        </mat-menu>
+      </td>
+    </ng-container>
+    <!-- [routerLink]="[project._id, 'project-view']" -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
