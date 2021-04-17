@@ -1,68 +1,69 @@
-<!-- <div class="spinner d-flex justify-content-center text-warning text-bold">
-  <div class="spinner-border" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
-</div> -->
 <!-- container -->
 <div class="container upload-main">
-  <div class="row">
-    <div class="col-md-6">
-      <a routerLink="/latest-projects" class="btn btn-link">
-        <i class="fa fa-arrow-circle-o-left"></i>
-        Back To Projects Page
-      </a>
-    </div>
-    <div class="col-md-6">
-      <div class="btn-group pull-right">
-        <a routerLink="/client/edit/{{ id }}" class="btn btn-dark">EDIT</a>
-        <button (click)="onDelete()" class="btn btn-danger">DELETE</button>
+  <div *ngIf="isLoading">
+    <div class="spinner d-flex justify-content-center text-warning text-bold">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
       </div>
     </div>
   </div>
-  <hr />
-  <div class="card" *ngIf="projectData">
-    <h2 class="card-header bg-warning">
-      <b class="text-primary">Project Name: </b> {{ projectData.projectName }}
-    </h2>
-    <div class="card-body">
-      <div class="row">
-        <div class="col-md-12">
-          <h5>
-            <b class="text-primary"> About Project:</b>
-            <span>{{ projectData.aboutProject }}</span>
-          </h5>
-        </div>
-        <div class="col-md-12">
-          <h5>
-            <b class="text-primary"> Payment Method:</b>
-            <span>{{ projectData.paymentMethod }}</span>
-          </h5>
-        </div>
-        <div class="col-md-12">
-          <h5>
-            <b class="text-primary"> Esimated Budget:</b>
-            <span>{{ projectData.esimatedBudget }}</span>
-          </h5>
-        </div>
-
-        <div class="col-md-12">
-          <h5>
-            <b class="text-primary"> Skill Required:</b>
-            <span>{{ projectData.skill }}</span>
-          </h5>
-        </div>
+  <div *ngIf="!isLoading">
+    <div class="row">
+      <div class="col-md-6">
+        <a routerLink="/latest-projects" class="btn btn-link">
+          <i class="fa fa-arrow-circle-o-left"></i>
+          Back To Projects Page
+        </a>
       </div>
+      <div class="col-md-6" *ngIf="role === 'developer'">
+        <button (click)="assignMe()">Assign Me</button>
+      </div>
+    </div>
+    <hr />
+    <div class="card" *ngIf="projectData">
+      <h2 class="card-header bg-warning">
+        <b class="text-primary">Project Name: </b> {{ projectData.projectName }}
+      </h2>
 
-      <div class="card-footer">
+      <div class="card-body">
         <div class="row">
           <div class="col-md-12">
             <h5>
-              <b class="text-primary"> Created By :</b>
-              <span>{{ projectData.creator.username }}</span>
+              <b class="text-primary"> About Project:</b>
+              <span>{{ projectData.aboutProject }}</span>
+            </h5>
+          </div>
+          <div class="col-md-12">
+            <h5>
+              <b class="text-primary"> Payment Method:</b>
+              <span>{{ projectData.paymentMethod }}</span>
+            </h5>
+          </div>
+          <div class="col-md-12">
+            <h5>
+              <b class="text-primary"> Esimated Budget:</b>
+              <span>{{ projectData.esimatedBudget }}</span>
+            </h5>
+          </div>
+
+          <div class="col-md-12">
+            <h5>
+              <b class="text-primary"> Skill Required:</b>
+              <span>{{ projectData.skill }}</span>
             </h5>
           </div>
         </div>
-        <!-- <div class="col-md-12">
+
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-md-12">
+              <h5>
+                <b class="text-primary"> Created By :</b>
+                <span>{{ projectData.creator.username }}</span>
+              </h5>
+            </div>
+          </div>
+          <!-- <div class="col-md-12">
           <h5>
             <b class="text-primary"> Created By :</b>
             <span>{{ projectData.creator.username }}</span>
@@ -75,6 +76,7 @@
             <span>{{ projectData.date | date }}</span>
           </i>
         </div> -->
+        </div>
       </div>
     </div>
   </div>

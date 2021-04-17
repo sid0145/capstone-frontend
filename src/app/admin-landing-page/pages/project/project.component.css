@@ -7,3 +7,10 @@ table {
   color: #fff;
   background-color: #f18304;
 }
+.spinner {
+  padding: 90px 0;
+}
+.spinner-border {
+  width: 200px;
+  height: 200px;
+}

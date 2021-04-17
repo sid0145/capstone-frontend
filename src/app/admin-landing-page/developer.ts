@@ -2,6 +2,7 @@ export interface Developer {
   _id?: string;
   name?: string;
   image?: string;
+  memberType?: string;
   email?: string;
   profession?: string;
   about?: string;

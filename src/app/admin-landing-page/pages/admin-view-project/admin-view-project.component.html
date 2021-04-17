@@ -1,0 +1,66 @@
+<mat-toolbar color="primary">
+  <div>PROJECT OVERVIEW</div>
+</mat-toolbar>
+<mat-card *ngIf="!isLoading">
+  <mat-card-header>
+    <mat-card-title
+      >TITLE:
+      <b>
+        {{ projectData?.projectName }}
+      </b>
+    </mat-card-title>
+    <mat-card-title
+      >Published By: <b>{{ projectData?.creator.username }}</b></mat-card-title
+    >
+
+    <mat-card-title
+      >Budget: <b>{{ projectData?.esimatedBudget }}</b></mat-card-title
+    >
+
+    <mat-card-title
+      >Payment By: <b>{{ projectData?.paymentMethod }}</b></mat-card-title
+    >
+    <mat-card-title
+      >Skill : <b>{{ projectData?.skill }}</b></mat-card-title
+    >
+    <mat-card-subtitle
+      >uploaded at : <b>{{ projectData?.date | date }}</b></mat-card-subtitle
+    >
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      <b>Description: </b>
+      {{ projectData?.aboutProject }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button class="assign" mat-button>Assign</button>
+    <button
+      *ngIf="projectData?.status === false"
+      class="review"
+      mat-button
+      (click)="onReview(projectData?._id)"
+    >
+      Review now
+    </button>
+    <button
+      *ngIf="projectData?.status === true"
+      mat-button
+      [disabled]="projectData?.status === true"
+    >
+      Reviewd
+    </button>
+    <button class="delete" mat-button (click)="onDelete(projectData?._id)">
+      Delete
+    </button>
+  </mat-card-actions>
+</mat-card>
+<!-- loading template -->
+<div
+  class="spinner d-flex justify-content-center text-warning text-bold"
+  *ngIf="isLoading"
+>
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>

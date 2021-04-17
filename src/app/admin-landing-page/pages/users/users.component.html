@@ -1,1 +1,112 @@
-<p>user page works</p>
+<!-- loading template -->
+<div
+  class="spinner d-flex justify-content-center text-warning text-bold"
+  *ngIf="isLoading"
+>
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<!-- main page content -->
+
+<section id="services" class="services">
+  <!-- main content -->
+  <div class="container">
+    <div *ngIf="!isLoading && dataSource.length == 0">
+      <section id="hero" class="hero d-flex align-items-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 d-flex flex-column justify-content-center">
+              <h1 data-aos="fade-up">No data Found!</h1>
+            </div>
+            <div class="col-lg-6 hero-img">
+              <img
+                src="../../../../assets/no-data-found-1.png"
+                class="img-fluid"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div *ngIf="!isLoading && dataSource.length > 0">
+      <div class="section-title">
+        <h2>All Users</h2>
+      </div>
+
+      <div class="table-container mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <!-- Full name Column -->
+          <ng-container matColumnDef="index">
+            <th mat-header-cell *matHeaderCellDef>
+              <b> Index</b>
+            </th>
+            <td mat-cell *matCellDef="let element; let i = index">
+              {{ i + 1 }}
+            </td>
+          </ng-container>
+
+          <!-- Username Column -->
+          <ng-container matColumnDef="username">
+            <th mat-header-cell *matHeaderCellDef>Username</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.username }}
+            </td>
+          </ng-container>
+
+          <!-- Email Column -->
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.email }}
+            </td>
+          </ng-container>
+          <!-- role Column -->
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.date | date }}
+            </td>
+          </ng-container>
+
+          <!-- Action -->
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element">
+              <button
+                mat-icon-button
+                [matMenuTriggerFor]="menu"
+                aria-label="Example icon-button with a menu"
+              >
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="updateRole(element._id)">
+                  <mat-icon color="primary">person</mat-icon>
+                  <span>update role</span>
+                </button>
+
+                <button mat-menu-item (click)="deleteHandler(element._id)">
+                  <mat-icon color="accent">delete</mat-icon>
+                  <span>Delete</span>
+                </button>
+              </mat-menu>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <mat-paginator
+    [length]="totalUsers"
+    [pageSize]="usersperPage"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="onChangedPage($event)"
+    *ngIf="dataSource.length > 0"
+  >
+  </mat-paginator>
+</section>

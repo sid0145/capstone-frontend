@@ -41,7 +41,12 @@
             >{{ username }}</a
           >
           <div class="dropdown-menu" ngbDropdownMenu>
-            <a class="dropdown-item" ngbDropdownItem href="#">Project Cart</a>
+            <a
+              class="dropdown-item"
+              ngbDropdownItem
+              routerLink="/project-request-page"
+              >My Requests</a
+            >
             <a class="dropdown-item" ngbDropdownItem (click)="onLogout()"
               >Logout</a
             >
@@ -77,41 +82,14 @@
         </li>
 
         <!-- developers  -->
-        <li class="nav-item dropdown" ngbDropdown>
+        <li class="nav-item mx-2">
           <a
             *ngIf="userIsAuthenticated"
-            class="nav-link dropdown-toggle"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-            ngbDropdownToggle
+            class="nav-link"
+            routerLink="/developers-page"
+            routerLinkActive="active"
+            >Developers</a
           >
-            Our Developers
-          </a>
-          <div class="dropdown-menu" ngbDropdownMenu>
-            <a
-              class="dropdown-item"
-              ngbDropdownItem
-              routerLink="/angular-developers"
-            >
-              Angular Developers</a
-            >
-
-            <a class="dropdown-item" ngbDropdownItem href="#">
-              Node Developers
-            </a>
-            <a class="dropdown-item" ngbDropdownItem href="#">
-              Python Developers</a
-            >
-
-            <a
-              class="dropdown-item"
-              ngbDropdownItem
-              routerLink="/java-developers"
-            >
-              Java Developers</a
-            >
-          </div>
         </li>
         <!-- developers end here -->
         <!-- more goes here -->
@@ -153,6 +131,7 @@
             class="nav-link"
             routerLink="/current-opening"
             *ngIf="userIsAuthenticated"
+            routerLinkActive="active"
             >Jobs</a
           >
         </li>
@@ -172,6 +151,7 @@
             class="nav-link"
             routerLink="/admin/dashboard"
             *ngIf="role === 'admin'"
+            routerLinkActive="active"
             >Admin</a
           >
         </li>

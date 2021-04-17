@@ -10,14 +10,16 @@ const BACKEND_URL = environment.api_url;
 @Injectable({
   providedIn: "root",
 })
-export class AngularService {
+export class DeveloperService {
+  constructor(private http: HttpClient) {}
+
+  //****angular develoeper */
   angularDeveloper: DeveloperModel[] = [];
 
   private angularDeveloperUpdated = new Subject<{
     developers: DeveloperModel[];
     developerCount: number;
   }>();
-  constructor(private http: HttpClient) {}
 
   getAngularDeveloper(developersPerPage: number, currentPage: number) {
     const queryParams = `?pagesize=${developersPerPage}&page=${currentPage}`;
@@ -37,5 +39,34 @@ export class AngularService {
 
   getAngularDeveloperUpdateListner() {
     return this.angularDeveloperUpdated.asObservable();
+  }
+  //*************angular developer ends here */
+
+  //****************java developer */
+  javaDeveloper: DeveloperModel[] = [];
+
+  private javaDeveloperUpdated = new Subject<{
+    developers: DeveloperModel[];
+    developerCount: number;
+  }>();
+
+  getJavaDeveloper(developersPerPage: number, currentPage: number) {
+    const queryParams = `?pagesize=${developersPerPage}&page=${currentPage}`;
+
+    this.http
+      .get<{ message: string; developers: any; maxDevelopers: number }>(
+        BACKEND_URL + "/getJavaDevelopers" + queryParams
+      )
+      .subscribe((data) => {
+        this.javaDeveloper = data.developers;
+        this.javaDeveloperUpdated.next({
+          developers: [...this.javaDeveloper],
+          developerCount: data.maxDevelopers,
+        });
+      });
+  }
+
+  getJavaDeveloperUpdateListner() {
+    return this.javaDeveloperUpdated.asObservable();
   }
 }

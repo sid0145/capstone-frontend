@@ -2,7 +2,7 @@
   <div class="wrapper">
     <!-- Sidebar  -->
     <nav id="sidebar">
-      <div class="sidebar-header">
+      <!-- <div class="sidebar-header">
         <div class="row">
           <div class="col-sm-12 text-center">
             <div class="member" data-aos="zoom-in" data-aos-delay="300">
@@ -16,7 +16,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <ul class="list-unstyled components">
         <hr />
@@ -31,16 +31,17 @@
             Users</a
           >
         </li>
-        <li>
-          <a [routerLink]="['developers']" class="text-warning">
-            <span> <i class="fa fa-desktop"></i> </span>
-            Developers</a
-          >
-        </li>
+
         <li>
           <a [routerLink]="['requests']" class="text-warning">
             <span> <i class="fa fa-paper-plane"></i> </span>
-            Requests</a
+            Join Requests</a
+          >
+        </li>
+        <li>
+          <a [routerLink]="['angular-developer', 'new']" class="text-warning">
+            <span> <i class="fa fa-paper-plane"></i> </span>
+            Add New Developer</a
           >
         </li>
         <li>
@@ -50,18 +51,30 @@
           >
         </li>
         <li>
+          <a [routerLink]="['java-developer']" class="text-warning">
+            <span> <i class="fa fa-paper-plane"></i> </span>
+            Java Developer</a
+          >
+        </li>
+        <li>
           <a [routerLink]="['projects']" class="text-warning">
             <span><i class="fa fa-book"></i> </span>
             Projects</a
           >
         </li>
-      </ul>
-
-      <!-- <ul class="list-unstyled CTAs">
         <li>
-          <a routerLink="/" class="article">Back to Dashboard</a>
+          <a [routerLink]="['hire-requests']" class="text-warning">
+            <span><i class="fa fa-book"></i> </span>
+            Hire Requests</a
+          >
         </li>
-      </ul> -->
+        <li>
+          <a [routerLink]="['hire-requests']" class="text-warning">
+            <span><i class="fa fa-book"></i> </span>
+            Contact Us</a
+          >
+        </li>
+      </ul>
     </nav>
 
     <!-- Page Content  -->

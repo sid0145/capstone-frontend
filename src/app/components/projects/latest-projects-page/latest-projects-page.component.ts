@@ -25,7 +25,6 @@ export class LatestProjectsPageComponent implements OnInit {
     this.projectService.getProjects().subscribe((projects: [Project]) => {
       this.isLoading = false;
       this.projects = projects;
-
       this.userId = this.authService.getUserId();
     });
   }

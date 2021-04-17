@@ -22,6 +22,7 @@ import { LatestProjectsPageComponent } from "./components/projects/latest-projec
 import { UploadProjectPageComponent } from "./components/projects/upload-project-page/upload-project-page.component";
 import { EditProjectComponent } from "./components/projects/edit-project/edit-project.component";
 import { ViewProjectComponent } from "./components/projects/view-project/view-project.component";
+import { CartComponent } from "./components/projects/cart/cart.component";
 
 const routes: Routes = [
   { path: "dashboard", component: HomeComponent },
@@ -58,6 +59,11 @@ const routes: Routes = [
   {
     path: "upload-project",
     component: UploadProjectPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: "project-request-page",
+    component: CartComponent,
     canActivate: [AuthGuard],
   },
   {

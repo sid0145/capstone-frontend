@@ -1,0 +1,23 @@
+button {
+  color: #fff;
+}
+.assign {
+  background-color: rgb(236, 120, 11);
+}
+.delete {
+  background-color: red;
+}
+.review {
+  background-color: green;
+}
+
+div {
+  margin: auto;
+}
+.spinner {
+  padding: 90px 0;
+}
+.spinner-border {
+  width: 200px;
+  height: 200px;
+}
