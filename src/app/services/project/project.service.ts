@@ -50,6 +50,12 @@ export class ProjectService {
     );
   }
 
+  //*****************get project by creator */
+
+  getProjectsByCreator() {
+    return this.http.get(`${BACKEND_URL}/getProjectByCreator`);
+  }
+
   //**********************get all projects */
 
   getProjects() {
@@ -85,6 +91,29 @@ export class ProjectService {
       );
   }
 
+  //*********************assigning a project */
+  assignMe(id: string, projectData: Project) {
+    this.http
+      .put(`${BACKEND_URL}/assignMe/${id}`, projectData)
+      .subscribe((data) => {
+        this.router.navigate(["/latest-projects"]);
+        this.snackbar.open("you have been opted for this project!", "success", {
+          duration: 3000,
+        });
+      });
+  }
+
+  //******************review project */
+  reviewProject(id: string, projectData: Project) {
+    this.http
+      .put(`${BACKEND_URL}/reviewProject/${id}`, projectData)
+      .subscribe((data) => {
+        this.router.navigate(["/admin", "/dashboard", "/projects"]);
+        this.snackbar.open("you have reviewd this project!", "success", {
+          duration: 3000,
+        });
+      });
+  }
   //******************deleting a project  -> if authorize */
   deleteProject(id: string) {
     return this.http.delete(`${BACKEND_URL}/deleteProject/${id}`);

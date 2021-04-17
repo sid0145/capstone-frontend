@@ -5,20 +5,12 @@ import { Subscription } from "rxjs";
 import { DeveloperModel } from "src/app/services/developer.model";
 import { DeveloperService } from "src/app/services/developer/developer.service";
 
-export interface Developer {
-  firstname: string;
-  lastname: string;
-  email: string;
-  date: Date;
-  action: string;
-}
-
 @Component({
-  selector: "app-angular-developer",
-  templateUrl: "./angular-developer.component.html",
-  styleUrls: ["./angular-developer.component.css"],
+  selector: "app-java-developer",
+  templateUrl: "./java-developer.component.html",
+  styleUrls: ["./java-developer.component.css"],
 })
-export class AngularDeveloperComponent implements OnInit {
+export class JavaDeveloperComponent implements OnInit {
   isLoading = false;
   developers: DeveloperModel[] = [];
   resultLengths = 0;
@@ -33,19 +25,13 @@ export class AngularDeveloperComponent implements OnInit {
 
   developerSubscription: Subscription;
 
-  constructor(
-    private router: Router,
-    private angularService: DeveloperService
-  ) {}
+  constructor(private router: Router, private javaService: DeveloperService) {}
 
   ngOnInit() {
     this.isLoading = true;
-    this.angularService.getAngularDeveloper(
-      this.developersperPage,
-      this.currentPage
-    );
-    this.developerSubscription = this.angularService
-      .getAngularDeveloperUpdateListner()
+    this.javaService.getJavaDeveloper(this.developersperPage, this.currentPage);
+    this.developerSubscription = this.javaService
+      .getJavaDeveloperUpdateListner()
       .subscribe(
         (developerData: {
           developers: DeveloperModel[];
@@ -62,7 +48,7 @@ export class AngularDeveloperComponent implements OnInit {
     this.isLoading = true;
     this.currentPage = pageData.pageIndex + 1;
     this.developersperPage = pageData.pageSize;
-    this.angularService.getAngularDeveloper(
+    this.javaService.getAngularDeveloper(
       this.developersperPage,
       this.currentPage
     );

@@ -15,6 +15,9 @@ import { AngularDeveloperComponent } from "./pages/angular-developer/angular-dev
 import { AddDeveloperComponent } from "./pages/add-developer/add-developer.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AdminService } from "./admin.service";
+import { HireRequestComponent } from './pages/hire-request/hire-request.component';
+import { JavaDeveloperComponent } from './pages/java-developer/java-developer.component';
+import { AdminViewProjectComponent } from './pages/admin-view-project/admin-view-project.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { AdminService } from "./admin.service";
     ContactMessagesComponent,
     AngularDeveloperComponent,
     AddDeveloperComponent,
+    HireRequestComponent,
+    JavaDeveloperComponent,
+    AdminViewProjectComponent,
   ],
   imports: [
     CommonModule,

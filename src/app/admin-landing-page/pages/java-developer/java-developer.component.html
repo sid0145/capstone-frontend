@@ -21,9 +21,7 @@
               <h2 data-aos="fade-up" data-aos-delay="400">
                 Please contact to Admin.
               </h2>
-              <button class="btn btn-warning" [routerLink]="['dashboard']">
-                <span><i class="fa fa-arrow-left"></i></span> GO TO DASHBORAD
-              </button>
+
               <div data-aos="fade-up" data-aos-delay="600"></div>
             </div>
             <div
@@ -43,7 +41,7 @@
     </div>
     <div *ngIf="!isLoading && dataSource.length > 0">
       <div class="section-title">
-        <h2>Angular Developers</h2>
+        <h2>Java Developers</h2>
       </div>
       <mat-toolbar>
         <a routerLink="/developers-page" class="btn btn-link">
@@ -51,7 +49,6 @@
           Back To Developer Page
         </a>
       </mat-toolbar>
-
       <div class="table-container mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
           <!-- Full name Column -->

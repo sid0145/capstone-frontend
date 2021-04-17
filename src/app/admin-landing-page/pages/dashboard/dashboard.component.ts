@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Chart } from "chart.js";
 import { Builder } from "protractor";
+import { User } from "src/app/services/auth/auth.model";
+import { AdminService } from "../../admin.service";
 
 @Component({
   selector: "app-dashboard",
@@ -9,10 +11,14 @@ import { Builder } from "protractor";
 })
 export class DashboardComponent implements OnInit {
   chart = [];
+  totalUsers: number;
 
-  constructor() {}
+  constructor(private adminService: AdminService) {}
 
   ngOnInit() {
+    this.adminService.getCountsUser().subscribe((data: { count: number }) => {
+      this.totalUsers = data.count;
+    });
     this.chart = new Chart("canvas", {
       type: "line",
       data: {

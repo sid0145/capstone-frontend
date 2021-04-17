@@ -32,14 +32,14 @@
 
               <button
                 class="btn btn-warning px-2 ml-2"
-                *ngIf="project.creator === userId"
+                *ngIf="project.creator._id === userId"
                 routerLink="/edit-project/{{ project._id }}"
               >
                 edit
               </button>
               <button
                 class="btn btn-danger px-2 ml-2"
-                *ngIf="project.creator === userId"
+                *ngIf="project.creator._id === userId"
                 (click)="onDelete(project._id)"
               >
                 delete
@@ -55,4 +55,7 @@
       </div>
     </div>
   </div>
+</div>
+<div class="main1" *ngIf="!isLoading && projects.length == 0">
+  <h1>No project added yet.</h1>
 </div>

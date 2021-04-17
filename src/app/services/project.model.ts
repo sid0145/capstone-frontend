@@ -7,4 +7,5 @@ export interface Project {
   esimatedBudget?: string;
   date?: Date;
   creator?: string;
+  allRequests?: [];
 }
